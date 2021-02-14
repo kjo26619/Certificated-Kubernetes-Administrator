@@ -28,23 +28,23 @@ Pods의 Labels는 metadata 섹션에서 labels 특성을 추가해주면 된다.
 
 그리고 Selectors는 Services, ReplicaSets, Deployments 에서 지정하며 spec 섹션에서 지정하면 원하는 Selectors를 구성할 수 있다.
 
-![image1]()
+![image1](https://github.com/kjo26619/Certificated-Kubernetes-Administrator/blob/main/Chapter1/Image/label1.PNG)
 
-![image2]()
+![image2](https://github.com/kjo26619/Certificated-Kubernetes-Administrator/blob/main/Chapter1/Image/label2.PNG)
 
 두 Pod의 차이는 label에서 function이 다르다. 
 
 Selectors를 쓰는 곳은 명령어에서도 사용할 수 있으며 --selector 옵션을 붙이면 된다.
 
-![image3]()
+![image3](https://github.com/kjo26619/Certificated-Kubernetes-Administrator/blob/main/Chapter1/Image/label3.PNG)
 
 --selector 옵션을 이용해서 Pods의 리스트를 보여줄 때 자신이 원하는 Selectors의 리스트를 받을 수 있다.
 
 그리고 ReplicaSets에서 본격적으로 사용이 된다.
 
-![image4]()
+![image4](https://github.com/kjo26619/Certificated-Kubernetes-Administrator/blob/main/Chapter1/Image/label4.PNG)
 
-![image5]()
+![image5](https://github.com/kjo26619/Certificated-Kubernetes-Administrator/blob/main/Chapter1/Image/label5.PNG)
 
 만들었던 Pods를 지운 뒤 ReplicaSet을 위와 같이 추가한다.
 
@@ -54,4 +54,4 @@ ReplicaSets은 selector를 통하여 자신이 관리할 Pods를 구분한다. �
 
 ReplicaSets을 만든 뒤 --selector 옵션으로 지정해서 확인해볼 수 있다.
 
-![image6]()
+![image6](https://github.com/kjo26619/Certificated-Kubernetes-Administrator/blob/main/Chapter1/Image/label6.PNG)
