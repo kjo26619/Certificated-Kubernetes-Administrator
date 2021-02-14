@@ -32,7 +32,7 @@ Pods의 Labels는 metadata 섹션에서 labels 특성을 추가해주면 된다.
 
 ![image2](https://github.com/kjo26619/Certificated-Kubernetes-Administrator/blob/main/Chapter1/Image/label2.PNG)
 
-두 Pod의 차이는 label에서 function이 다르다. 
+두 Pod의 차이는 labels에서 function이 다르다. 
 
 Selectors를 쓰는 곳은 명령어에서도 사용할 수 있으며 --selector 옵션을 붙이면 된다.
 
@@ -55,3 +55,11 @@ ReplicaSets은 selector를 통하여 자신이 관리할 Pods를 구분한다. �
 ReplicaSets을 만든 뒤 --selector 옵션으로 지정해서 확인해볼 수 있다.
 
 ![image6](https://github.com/kjo26619/Certificated-Kubernetes-Administrator/blob/main/Chapter1/Image/label6.PNG)
+
+# Annotations
+
+metadata 섹션에는 Labels와 유사한 Annotaions이 있다.
+
+하지만 Annotaions는 객체를 구분하기 위해 사용하지 않는다.
+
+Annotaions는 빌드 버전, Contact 정보 등의 자세한 내용을 기술하며 Labels보다 더 많은 문자를 사용할 수 있다.
