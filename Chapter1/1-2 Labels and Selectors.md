@@ -56,6 +56,10 @@ ReplicaSets을 만든 뒤 --selector 옵션으로 지정해서 확인해볼 수 
 
 ![image6](https://github.com/kjo26619/Certificated-Kubernetes-Administrator/blob/main/Chapter1/Image/label6.PNG)
 
+그리고 kubectl get 명령어에서 --show-labels 옵션을 추가하면 각 객체가 가지고 있는 Labels를 확인해볼 수 있다.
+
+![image7](https://github.com/kjo26619/Certificated-Kubernetes-Administrator/blob/main/Chapter1/Image/label7.PNG)
+
 # Annotations
 
 metadata 섹션에는 Labels와 유사한 Annotaions이 있다.
