@@ -30,7 +30,7 @@ Taints 설정은 kubectl taint nodes 명령어를 이용하면 된다.
 # kubectl taint nodes (NODES NAME) (KEY)=(VALUE):(TAINT-EFFECT)
 ```
 
-![image1]()
+![image1](https://github.com/kjo26619/Certificated-Kubernetes-Administrator/blob/main/Chapter1/Image/taint1.PNG)
 
 Taints가 설정되면 kubectl describe node 명령어로 확인할 수 있다.
 
@@ -40,9 +40,17 @@ Taints가 설정되면 kubectl describe node 명령어로 확인할 수 있다.
 # kubectl describe node (NODES NAME) | grep Taint
 ```
 
-![image2]()
+![image2](https://github.com/kjo26619/Certificated-Kubernetes-Administrator/blob/main/Chapter1/Image/taint2.PNG)
 
-참고로 Control Plane은 이미 NoSchedule Taints가 설정이 되어 있다.
+이제 Tolertaions가 지정되지 않은 Pod를 만들어보면 Pod가 Pending 되는 것을 확인할 수 있다.
+
+kubectl describe pod 명령어로 Events를 확인해보면 Taints에 의해서 Scheduling될 Node가 없다는 것을 확인할 수 있다. ( 환경은 Control Plane 1, Worker 1로 구성 )
+
+![image3](https://github.com/kjo26619/Certificated-Kubernetes-Administrator/blob/main/Chapter1/Image/taint3.PNG)
+
+![image4](https://github.com/kjo26619/Certificated-Kubernetes-Administrator/blob/main/Chapter1/Image/taint4.PNG)
+
+참고로 Control Plane은 처음부터 NoSchedule Taints가 설정이 되어 있다.
 
 설정된 Taints를 삭제하기 위해서는 kubectl taint nodes 명령어에서 뒤에 Taint에 대하여 - 를 붙여주면 된다.
 
@@ -50,7 +58,7 @@ Taints가 설정되면 kubectl describe node 명령어로 확인할 수 있다.
 # kubectl taint nodes (NODES NAME) (KEY)=(VALUE):(TAINT-EFFECT)-
 ```
 
-![image3]()
+![image5](https://github.com/kjo26619/Certificated-Kubernetes-Administrator/blob/main/Chapter1/Image/taint5.PNG)
 
 # Tolerations
 
@@ -62,7 +70,9 @@ Taints와 Tolerations는 잘못된 Scheduling을 방지하는 것이지 이 Pod�
 
 Tolerations는 Pod의 YAML파일에서 spec 섹션에 tolerations 특성을 추가하여 설정한다.
 
-![image4]()
+![image6](https://github.com/kjo26619/Certificated-Kubernetes-Administrator/blob/main/Chapter1/Image/taint6.PNG)
+
+![image7](https://github.com/kjo26619/Certificated-Kubernetes-Administrator/blob/main/Chapter1/Image/taint7.PNG)
 
 Taints를 설정하면서 사용했던 Key, Value, Effect를 사용하면 된다. 
 
@@ -72,5 +82,7 @@ Exist는 Value를 따로 지정할 필요가 없이 Key만 지정한다. 같은 
 
 당연하게도 Taints와 Tolerations는 여러 개를 지정할 수 있다. 같은 Key 다른 Value일 수도 있고 다른 Key 다른 Value일 수도 있다.
 
-![image5]()
+![image8](https://github.com/kjo26619/Certificated-Kubernetes-Administrator/blob/main/Chapter1/Image/taint8.PNG)
+
+![image9](https://github.com/kjo26619/Certificated-Kubernetes-Administrator/blob/main/Chapter1/Image/taint9.PNG)
 
