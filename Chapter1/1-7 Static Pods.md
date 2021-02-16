@@ -11,3 +11,11 @@ Staitc Pods는 kube-apiserver에 의해 관리되지 않고 Node에 있는 Kubel
 이러한 Static Pods는 처음 Cluster를 구성하면서 Control Plane을 의한 controller-manager, kube-apiserver, etcd 등을 만들 때 사용한다. 
 
 정확한 사항은 https://kubernetes.io/ko/docs/tasks/configure-pod-container/static-pod/ 에서 확인할 수 있다.
+
+# Multiple Scheduler
+
+기본적으로 Kubernetes에서는 kube-scheduler를 제공해주지만 자신이 원하는대로 변경한 Scheduler를 여러 개 사용할 수 있도록 지원하고 있다.
+
+이는 Static Pods를 통해 만들며 각 Pod들을 만들 때 사용할 Scheduler를 지정해줄 수 있다.
+
+정확한 사항은 https://kubernetes.io/docs/tasks/extend-kubernetes/configure-multiple-schedulers/ 에서 확인할 수 있다.
