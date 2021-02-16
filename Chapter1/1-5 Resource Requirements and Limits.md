@@ -10,11 +10,24 @@ Pod를 배치할 때 한 Node가 가진 Resource들이 한계치를 넘어설 �
 
 각 Pod가 너무 많은 CPU, Memory, Disk 들을 가질 수 없게끔 제한하고 최소 필요한 Resource를 정해줄 수 있다.
 
-# Resource Requirements
+# Define Requirements and Limits
 
-Resource에 대한 Requirements를 정하는 것은 크게 어렵지 않다.
+Resource에 대한 Requirements와 Limits를 정하는 것은 크게 어렵지 않다.
 
 YAML 파일에서 spec 섹션에 각 container에게 필요한 resources를 추가해주면 된다.
 
-![image1]()
+![image1](https://github.com/kjo26619/Certificated-Kubernetes-Administrator/blob/main/Chapter1/Image/requirement1.PNG)
 
+resources 밑에 필요한 Requirements를 requests로 추가하며 Limits는 limits로 추가하면 된다.
+
+여기서 CPU는 단위가 가상 CPU 즉, vCPU이다. 그리고 Memory나 Disk 같은 경우에는 K, M, G와 Ki, Mi, Gi로 나뉜다.
+
+K/ M/ G는 1,000bytes/ 1,000,000bytes/ 1,000,000,000bytes 를 뜻한다.
+
+Ki/ Mi/ Gi는 1,024bytes/ 1,048,576bytes/ 1,073,741,824bytes를 뜻한다.
+
+설정된 Resource Requirements와 Limits를 확인하려면 kubectl describe pod 명령어를 사용하면 된다.
+
+![image2](https://github.com/kjo26619/Certificated-Kubernetes-Administrator/blob/main/Chapter1/Image/requirement2.PNG)
+
+만약 Pod가 제한된 Resource를 사용해야할 경우 Pending 된다.
