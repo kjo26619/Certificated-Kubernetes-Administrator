@@ -76,9 +76,9 @@ Tolerations는 Pod의 YAML파일에서 spec 섹션에 tolerations 특성을 추�
 
 Taints를 설정하면서 사용했던 Key, Value, Effect를 사용하면 된다. 
 
-Operator는 Equal과 Exist가 있다. Equal은 Key와 Value가 같은 Taints에 대하여 Tolerations를 설정하는 것이다. 
+Operator는 Equal과 Exists가 있다. Equal은 Key와 Value가 같은 Taints에 대하여 Tolerations를 설정하는 것이다. 
 
-Exist는 Value를 따로 지정할 필요가 없이 Key만 지정한다. 같은 Key인 Taints에 대한 Tolerations를 설정하는 것이다.
+Exists는 Value를 따로 지정할 필요가 없이 Key만 지정한다. 같은 Key인 Taints에 대한 Tolerations를 설정하는 것이다.
 
 당연하게도 Taints와 Tolerations는 여러 개를 지정할 수 있다. 같은 Key 다른 Value일 수도 있고 다른 Key 다른 Value일 수도 있다.
 
