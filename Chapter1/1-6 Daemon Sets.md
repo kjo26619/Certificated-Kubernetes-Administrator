@@ -20,11 +20,11 @@ DaemonSets은 확인하기 위해서는 kubectl get daemonset 명령어를 사�
 # kubectl get daemonset --all-namespaces
 ```
 
-![image1]()
+![image1](https://github.com/kjo26619/Certificated-Kubernetes-Administrator/blob/main/Chapter1/Image/daemonset1.PNG)
 
 DaemonSets의 설정은 ReplicaSets와 유사하며 몇몇의 차이만 있을 뿐이다.
 
-![image2]()
+![image2](https://github.com/kjo26619/Certificated-Kubernetes-Administrator/blob/main/Chapter1/Image/daemonset2.PNG)
 
 apiVersion은 apps/v1으로 같으며 kind가 DaemonSet으로 바뀐다.
 
@@ -32,7 +32,7 @@ apiVersion은 apps/v1으로 같으며 kind가 DaemonSet으로 바뀐다.
 
 Namespace는 원하는 Namespace로 지정하면 되며 안할 경우 default Namespace로 결정된다. 
 
-![image3]()
+![image3](https://github.com/kjo26619/Certificated-Kubernetes-Administrator/blob/main/Chapter1/Image/daemonset3.PNG)
 
 위 사진에서 보는 바와 같이 기존에 만들어진 DaemonSets는 3개( 노드 수 : Control Plane 1, Worker 2 )를 유지하지만 새로 만든 것은 2개만 유지하는 것을 확인할 수 있다.
 
