@@ -18,31 +18,31 @@ Node Selectors는 매우 간단한 방법이다.
 # kubectl label nodes (NODE NAMES) (KEY)=(VALUE)
 ```
 
-![image1]()
+![image1](https://github.com/kjo26619/Certificated-Kubernetes-Administrator/blob/main/Chapter1/Image/nodesa1.PNG)
 
 그리고 kubectl describe node 명령어를 통해서 Labels가 추가된 것을 확인할 수 있다.
 
-![image2]()
+![image2](https://github.com/kjo26619/Certificated-Kubernetes-Administrator/blob/main/Chapter1/Image/nodesa2.PNG)
 
 이제 Pod를 설정할 때 spec 섹션에 nodeSelector 라는 특성을 추가해주면 된다. 
 
 nodeSelector는 Key: Value로 구성해주면 된다.
 
-![image3]()
+![image3](https://github.com/kjo26619/Certificated-Kubernetes-Administrator/blob/main/Chapter1/Image/nodesa3.PNG)
 
 Node Selector를 지정한 뒤 Pod를 만들면 제대로 Running 되는 것을 확인할 수 있다. 
 
 또한 kubectl describe node 명령어를 통해 지정한 Node로 Scheduling 된 것을 확인할 수 있다.
 
-![image4]()
+![image4](https://github.com/kjo26619/Certificated-Kubernetes-Administrator/blob/main/Chapter1/Image/nodesa4.PNG)
 
 만약 Pod를 구성할 때 다른 Labels로 구성하면 Pending이 되면서 Node에 할당이 되지 않는다.
 
-![image5]()
+![image5](https://github.com/kjo26619/Certificated-Kubernetes-Administrator/blob/main/Chapter1/Image/nodesa5.PNG)
 
-![image6]()
+![image6](https://github.com/kjo26619/Certificated-Kubernetes-Administrator/blob/main/Chapter1/Image/nodesa6.PNG)
 
-![image7]()
+![image7](https://github.com/kjo26619/Certificated-Kubernetes-Administrator/blob/main/Chapter1/Image/nodesa7.PNG)
 
 Pending된 이유는 kubectl describe node 명령어에서 Events의 Message에서 확인할 수 있다.
 
