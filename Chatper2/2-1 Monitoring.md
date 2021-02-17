@@ -27,3 +27,5 @@ Metric Server의 설치가 끝나면 kubectl top 명령어를 사용할 수 있�
 ```
 kubectl top (node or pod or ...)
 ```
+
+그 외에 다른 Montioring 도구는 공식 홈페이지에서 확인하면 된다.
