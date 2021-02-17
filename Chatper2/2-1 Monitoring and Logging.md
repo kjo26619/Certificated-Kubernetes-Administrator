@@ -29,3 +29,19 @@ kubectl top (node or pod or ...)
 ```
 
 그 외에 다른 Montioring 도구는 공식 홈페이지에서 확인하면 된다.
+
+# Logging
+
+Log는 문제가 발생했을 때 원인을 찾고 지금까지의 활동 내역을 확인할 수 있기 때문에 매우 중요하다.
+
+Kubernetes에서는 기본적으로 Pod 수준의 Log 명령어를 지원해준다. 이는 kubectl logs 명령어이다.
+
+```
+kubectl logs (POD)
+```
+
+원하는 정보를 출력하거나 Log 파일로 만들기 위해서는 https://kubernetes.io/docs/concepts/cluster-administration/logging/ 에서의 지침을 따르면 된다.
+
+위 링크에서도 나오지만, Kubernetes에서는 클러스터 수준의 Logging 아키텍처를 공식적으로 지원하지 않는다.
+
+대신 Kubernetes와 호환되는 여러 Logging 도구들이 있으니 따로 설치해서 사용해야 한다.
