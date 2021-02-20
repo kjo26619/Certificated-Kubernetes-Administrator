@@ -20,7 +20,7 @@ Rollout 명령어는 Deployment의 배포 업데이트를 할 수 있는 명령�
 # kubectl rollout status deployment (DEPLOYMENT NAME)
 ```
 
-![image1]()
+![image1](https://github.com/kjo26619/Certificated-Kubernetes-Administrator/blob/main/Chatper2/Image/rolling1.PNG)
 
 그리고 Rollout의 기록을 보고 싶다면 kubectl rollout history 명령어를 사용하면 된다.
 
@@ -28,7 +28,7 @@ Rollout 명령어는 Deployment의 배포 업데이트를 할 수 있는 명령�
 # kubectl rollout history (DEPLOYMENT NAME)
 ```
 
-![image2]()
+![image2](https://github.com/kjo26619/Certificated-Kubernetes-Administrator/blob/main/Chatper2/Image/rolling2.PNG)
 
 # RollingUpdate and Recreate
 
@@ -36,7 +36,7 @@ Deployments의 두가지 업데이트 방법은 YAML 파일을 통해서 지정�
 
 spec 섹션에서 strategy 특성을 추가한 다음 RollingUpdate나 Recreate를 지정한다.
 
-![image3]()
+![image3](https://github.com/kjo26619/Certificated-Kubernetes-Administrator/blob/main/Chatper2/Image/rolling3.PNG)
 
 Max Unavailable과 Max Surge는 각각 업데이트 중 사용할 수 없는 최대 포드 수와 업데이트 프로세스를 진행할 수 있는 최대 포드 수이다.
 
@@ -48,15 +48,15 @@ Deployment를 만든 뒤 kubectl describe 명령어로 확인해보면 StrategyT
 # kubectl describe deployment (DEPLOYMENT NAME)
 ```
 
-![image4]()
+![image4](https://github.com/kjo26619/Certificated-Kubernetes-Administrator/blob/main/Chatper2/Image/rolling4.PNG)
 
 Recreate 같은 경우 RollingUpdate와는 다르게 몇 퍼센트의 Pod를 유지해야하는지 지정할 필요가 없다.
 
 kubectl edit으로 Deployment를 수정하거나 YAML파일을 바꾼 뒤 kubectl apply 명령어를 사용하면 된다.
 
-![image5]()
+![image5](https://github.com/kjo26619/Certificated-Kubernetes-Administrator/blob/main/Chatper2/Image/rolling5.PNG)
 
-![image6]()
+![image6](https://github.com/kjo26619/Certificated-Kubernetes-Administrator/blob/main/Chatper2/Image/rolling6.PNG)
 
 Rolling Update를 지정하면 Pod를 모두 종료하지 않고 일부만 종료하는 것을 확인해볼 수 있으며 Recreate로 지정하면 모든 Pod가 한번에 종료되고 다시 켜지는 것을 확인할 수 있다.
 
@@ -70,7 +70,7 @@ Rollback을 하는 방법은 Rollout 명령어 중에 undo 하위 명령을 사�
 # kubectl rollout undo deployment (DEPLOYMENT NAME)
 ```
 
-![image7]()
+![image7](https://github.com/kjo26619/Certificated-Kubernetes-Administrator/blob/main/Chatper2/Image/rolling7.PNG)
 
 이 명령어를 통해 Rollout 하기 이전으로 돌아간다.
 
