@@ -22,16 +22,32 @@ Secrets를 만드는 방법은 kubectl create 명령어를 사용한다. 방법�
 
 그리고 YAML파일을 이용해서 만들 수 있다. YAML파일의 형식도 ConfigMap과 유사하나 kind가 Secret으로 바뀐다.
 
+그러나 가장 유의해야하는 점이 있다. 바로 data 섹션에서 Key-Value를 지정할 때 Value가 이미 base64로 인코딩된 문자열로 지정해야되는 점이다.
+
+즉, passwrd 같은 경우에는 cGFzc3dyZA== 로 변환한 뒤 적어주어야 한다. 변환하는 법은 echo 를 이용하면 된다.
+
+```
+# echo -n (VALUE) | base64
+
+# echo -n (ENCODED VALUE) | base64 --decode
+```
+
+밑에 있는 명령어는 base64로 인코딩된 문자열을 평문으로 디코딩하는 것이다.
+
+![image1]()
+
 ```
 apiVersion: v1
 kind: Secret
 metadata:
   name: app-secret-2
 data:
-  DB_HOST: "mysql"
-  DB_USER: "root"
-  DB_PASSWORD: "passwrd"
+  DB_HOST: bXlzcWw=
+  DB_USER: cm9vdA==
+  DB_PASSWORD: cGFzc3dyZA==
 ```
+
+![image2]()
 
 만들어진 Secrets를 확인하기 위해서는 kubectl get secret 명령어를 사용하면 된다.
 
@@ -43,13 +59,9 @@ data:
 # kubectl describe secrets
 ```
 
-![image2]()
-
-만들어진 Secrets를 가지고 base64로 decode 해보면 원하는 평문이 나오는 것을 확인해볼 수 있다.
-
 ![image3]()
 
-Pod를 만들 때 Secrets를 지정하는 방법 역시 ConfigMap과 유사하다.
+Pod를 만들 때 Secrets를 환경 변수로 지정하는 방법 역시 ConfigMap과 유사하다.
 
 containers에서 envFrom을 지정하면 된다.
 
@@ -69,6 +81,8 @@ sepc:
         name: app-secret-2
 ```
 
-![image4]()
+![image3]()
 
-Secrets를 Volume으로 지정하면 Container 내부에서는 평문으로 저장된다.
+Secrets를 Volume으로 지정할 수 있으며 이는 Volume에서 자세히 다룰 예정이다.
+
+만약 Volume으로 지정하면 Container 내부에서는 평문으로 저장된다.
