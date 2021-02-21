@@ -44,13 +44,13 @@ YAML 파일을 이용할 경우 kind가 ConfigMap이 되며, spec 대신에 data
 apiVersion: v1
 kind: ConfigMap
 metadata:
-  name: app-config
+  name: app-config-2
 data:
-  APP_NAME: simpleWeb
-  APP_VERSION: 1.10
+  APP_NAME: "simpleWeb"
+  APP_VERSION: "1.10"
 ```
 
-![image1]()
+![image1](https://github.com/kjo26619/Certificated-Kubernetes-Administrator/upload/main/Chatper2/Image/env1.PNG)
 
 ConfigMap을 통해 만들면 각 Container의 여러 조건을 YAML파일에 나열할 필요 없이 다 따로 지정해줄 수 있다. 
 
@@ -62,7 +62,7 @@ Configmap을 확인하기 위해서는 kubectl get configmaps 명령어와 kubec
 # kubectl describe configmaps (CONFIG NAME)
 ```
 
-![image2]()
+![image2](https://github.com/kjo26619/Certificated-Kubernetes-Administrator/upload/main/Chatper2/Image/env2.PNG)
 
 ConfigMap을 만들었다면 Pod를 구성할 때 env에서 Key-Value를 구성하지 않고 ConfigMap으로 구성해줄 수 있다.
 
@@ -82,7 +82,9 @@ spec:
           name: app-config
 ```
 
-![image3]()
+![image3](https://github.com/kjo26619/Certificated-Kubernetes-Administrator/upload/main/Chatper2/Image/env3.PNG)
+
+kubectl describe 명령어에서 Environment Variables from 을 확인해보면 app-config가 있는 것을 확인해볼 수있다.
 
 이러한 ConfigMap은 로컬 환경에만 유지되므로 Volume에 지정해줄 수도 있다. 자세한 사항은 Volume에서 설명한다.
 
