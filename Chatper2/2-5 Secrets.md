@@ -34,7 +34,7 @@ Secrets를 만드는 방법은 kubectl create 명령어를 사용한다. 방법�
 
 밑에 있는 명령어는 base64로 인코딩된 문자열을 평문으로 디코딩하는 것이다.
 
-![image1]()
+![image1](https://github.com/kjo26619/Certificated-Kubernetes-Administrator/blob/main/Chatper2/Image/secret1.PNG)
 
 ```
 apiVersion: v1
@@ -47,7 +47,7 @@ data:
   DB_PASSWORD: cGFzc3dyZA==
 ```
 
-![image2]()
+![image2](https://github.com/kjo26619/Certificated-Kubernetes-Administrator/blob/main/Chatper2/Image/secret2.PNG)
 
 만들어진 Secrets를 확인하기 위해서는 kubectl get secret 명령어를 사용하면 된다.
 
@@ -59,7 +59,7 @@ data:
 # kubectl describe secrets
 ```
 
-![image3]()
+![image3](https://github.com/kjo26619/Certificated-Kubernetes-Administrator/blob/main/Chatper2/Image/secret3.PNG)
 
 Pod를 만들 때 Secrets를 환경 변수로 지정하는 방법 역시 ConfigMap과 유사하다.
 
@@ -81,7 +81,7 @@ sepc:
         name: app-secret-2
 ```
 
-![image3]()
+![image4](https://github.com/kjo26619/Certificated-Kubernetes-Administrator/blob/main/Chatper2/Image/secret4.PNG)
 
 Secrets를 Volume으로 지정할 수 있으며 이는 Volume에서 자세히 다룰 예정이다.
 
