@@ -50,7 +50,7 @@ data:
   APP_VERSION: "1.10"
 ```
 
-![image1](https://github.com/kjo26619/Certificated-Kubernetes-Administrator/blob/main/Chatper2/Image/env1.PNG)
+![image1](https://github.com/kjo26619/Certificated-Kubernetes-Administrator/blob/main/Chapter2/Image/env1.PNG)
 
 ConfigMap을 통해 만들면 각 Container의 여러 조건을 YAML파일에 나열할 필요 없이 다 따로 지정해줄 수 있다. 
 
@@ -62,7 +62,7 @@ Configmap을 확인하기 위해서는 kubectl get configmaps 명령어와 kubec
 # kubectl describe configmaps (CONFIG NAME)
 ```
 
-![image2](https://github.com/kjo26619/Certificated-Kubernetes-Administrator/blob/main/Chatper2/Image/env2.PNG)
+![image2](https://github.com/kjo26619/Certificated-Kubernetes-Administrator/blob/main/Chapter2/Image/env2.PNG)
 
 ConfigMap을 만들었다면 Pod를 구성할 때 env에서 Key-Value를 구성하지 않고 ConfigMap으로 구성해줄 수 있다.
 
@@ -82,7 +82,7 @@ spec:
           name: app-config
 ```
 
-![image3](https://github.com/kjo26619/Certificated-Kubernetes-Administrator/blob/main/Chatper2/Image/env3.PNG)
+![image3](https://github.com/kjo26619/Certificated-Kubernetes-Administrator/blob/main/Chapter2/Image/env3.PNG)
 
 kubectl describe 명령어에서 Environment Variables from 을 확인해보면 app-config가 있는 것을 확인해볼 수있다.
 
