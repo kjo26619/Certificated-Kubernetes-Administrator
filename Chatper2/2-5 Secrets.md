@@ -18,8 +18,6 @@ Secrets를 만드는 방법은 kubectl create 명령어를 사용한다. 방법�
 # kubectl create secret generic (SECRET NAME) --from-file=(FILE PATH)
 ```
 
-![image1]()
-
 그리고 YAML파일을 이용해서 만들 수 있다. YAML파일의 형식도 ConfigMap과 유사하나 kind가 Secret으로 바뀐다.
 
 그러나 가장 유의해야하는 점이 있다. 바로 data 섹션에서 Key-Value를 지정할 때 Value가 이미 base64로 인코딩된 문자열로 지정해야되는 점이다.
