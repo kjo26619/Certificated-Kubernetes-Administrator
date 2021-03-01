@@ -12,9 +12,9 @@ Kubernetes에서는 Node가 중단되었을 경우 (kubelet과 통신이 되지 
 # kubectl drain (NODE NAME)
 ```
 
-![image1]()
+![image1](https://github.com/kjo26619/Certificated-Kubernetes-Administrator/blob/main/Chapter3/Image/drain1.PNG)
 
-![image2]()
+![image2](https://github.com/kjo26619/Certificated-Kubernetes-Administrator/blob/main/Chapter3/Image/drain2.PNG)
 
 kubectl drain 명령어를 통해서 Node에 있는 Pod를 다른 Node로 이동시킨 뒤에 재부팅을 수행하면 된다.
 
@@ -24,25 +24,25 @@ kubectl drain 명령어를 통해서 Node에 있는 Pod를 다른 Node로 이동
 
 이 두가지의 경우에는 --force와 --ignore-daemonsets 옵션을 추가해주면 된다. 그러나 --force를 사용할 경우 그 Pod는 삭제된다.
 
-![image3]()
+![image3](https://github.com/kjo26619/Certificated-Kubernetes-Administrator/blob/main/Chapter3/Image/drain3.PNG)
 
 이를 방지하기 위해서는 ReplicaSet으로 Pod를 구성해서 관리해주면 된다.
 
-![image4]()
+![image4](https://github.com/kjo26619/Certificated-Kubernetes-Administrator/blob/main/Chapter3/Image/drain4.PNG)
 
 ReplicaSet에 의해서 Pod가 관리되고 확인해보면 각각 존재하는 Node에 Pod를 할당한 것을 확인할 수 있다.
 
-![image5]()
+![image5](https://github.com/kjo26619/Certificated-Kubernetes-Administrator/blob/main/Chapter3/Image/drain5.PNG)
 
 여기서, drain 명령을 사용하면 node2는 evicted되며 존재하는 Pod가 다른 Node로 이동하고 더이상 Scheduling 받지 않는다.
 
-![image6]()
+![image6](https://github.com/kjo26619/Certificated-Kubernetes-Administrator/blob/main/Chapter3/Image/drain6.PNG)
 
-![image7]()
+![image7](https://github.com/kjo26619/Certificated-Kubernetes-Administrator/blob/main/Chapter3/Image/drain7.PNG)
 
 Pod의 상태를 확인해보면 다른 Node로 이동한 것을 확인할 수 있다.
 
-![image8]()
+![image8](https://github.com/kjo26619/Certificated-Kubernetes-Administrator/blob/main/Chapter3/Image/drain8.PNG)
 
 Node의 상태를 확인해보면 SchedulingDisabled가 되어 있는 것을 확인할 수 있다.
 
@@ -52,7 +52,7 @@ Node의 상태를 확인해보면 SchedulingDisabled가 되어 있는 것을 확
 # kubectl uncordon (NODE NAME)
 ```
 
-![image9]()
+![image9](https://github.com/kjo26619/Certificated-Kubernetes-Administrator/blob/main/Chapter3/Image/drain9.PNG)
 
 drain 명령을 수행하면 Kubernetes Controller는 그 Node를 Scheduling에서 제외한다. 그리고 uncordon 명령을 수행하면 다시 Scheduling에 포함한다.
 
@@ -70,6 +70,6 @@ uncordon이 있다면 cordon 명령어도 존재한다. cordon은 drain 명령�
 
 cordon은 Scheduling을 막기 위해 사용한다.
 
-![image10]()
+![image10](https://github.com/kjo26619/Certificated-Kubernetes-Administrator/blob/main/Chapter3/Image/drain10.PNG)
 
 확인해보면 기존에 존재하는 Pod들은 삭제되지는 않지만 Node의 상태에는 SchedulingDisabled가 되어 있다.
