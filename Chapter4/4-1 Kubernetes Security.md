@@ -16,10 +16,10 @@ Kubernetes Cluster에 대한 접속 권한 설정은 Static Password Files, Stat
 
 # Static Password & Token Files
 
-Static Password & Token Files는 그냥 외부 파일 시스템에 Password, User Name, User ID, Group 혹은 Token을 CSV파일로 저장한 뒤
+Static Password & Token Files는 그냥 외부 파일 시스템에 Password(or Token), User Name, User ID, Group을 CSV파일로 저장한 뒤
 
 API 서버에서 이 CSV 파일을 Authentication에 사용한다고 하면 된다.
 
+하지만 이 방법은 외부 파일 시스템에 평문으로 존재시켜야 하므로 외부 파일 시스템 공격에 취약하다.
 
-
-
+그래서 Kubernetes에서도 추천하는 방법은 아니다.
