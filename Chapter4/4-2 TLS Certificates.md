@@ -54,9 +54,22 @@ kube-apiserver의 인증서는 /etc/kubernetes/pki/apiserver.crt 로 구성된�
 # openssl x509 -in (CERTIFICATES FILE) -text
 ```
 
-![image1]()
-
 이를 통해 인증서의 Common Name, CA Name, Alternate Names, 만료일 등을 확인할 수 있다.
 
 만료일의 경우 CA 인증서는 10년이며 하위 인증서들은 1년이다.
 
+이러한 인증서의 위치는 모두 Kubernetes의 Static Pods를 만들 때 구성된다. 즉, /etc/kubernetes/manifests 에 있는 YAML 파일에서 결정한다.
+
+그리고 이제 클라이언트 인증서들이 필요하다.
+
+1. kubelet에서 API 서버 인증서를 인증 시 사용하는 클라이언트 인증서
+2. API 서버에 클러스터 관리자 인증을 위한 클라이언트 인증서
+3. API 서버에서 kubelet과 통신을 위한 클라이언트 인증서
+4. API 서버에서 etcd 간의 통신을 위한 클라이언트 인증서
+5. controller manager와 API 서버 간의 통신을 위한 클라이언트 인증서 / kubeconfig
+6. scheduller와 API 서버 간의 통신을 위한 클라이언트 인증서 / kubeconfig
+7. front-proxy를 위한 클라이언트와 서버 인증서 (kube-proxy에서 API 서버 확장을 지원할 때만 필요)
+
+모두 kubeadm에 의해 자동으로 구성되며 각 구성요소들은 인증서를 통해 보안 통신을 할 수 있다.
+
+정확한 사항은 https://kubernetes.io/docs/setup/best-practices/certificates/#all-certificates 에서 확인할 수 있다.
