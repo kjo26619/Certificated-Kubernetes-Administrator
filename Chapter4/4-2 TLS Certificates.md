@@ -73,3 +73,91 @@ kube-apiserver의 인증서는 /etc/kubernetes/pki/apiserver.crt 로 구성된�
 모두 kubeadm에 의해 자동으로 구성되며 각 구성요소들은 인증서를 통해 보안 통신을 할 수 있다.
 
 정확한 사항은 https://kubernetes.io/docs/setup/best-practices/certificates/#all-certificates 에서 확인할 수 있다.
+
+수동으로 키와 인증서를 만든다면 위를 꼭 참고해야 한다.
+
+# Certificates API
+
+kubeadm 이 자동으로 인증서들을 구성하거나 수동으로 모두 구성하고 나면 이제 Kubernetes Cluster는 문제없이 실행되고 있다.
+
+만약, kube-apiserver 나 etcd의 응답이 이루어지지 않을 경우 인증서 만료나 YAML 파일의 인증서 구성이 잘못되어 있을 수 있다.
+
+그 다음 Kubernetes를 관리자가 Control Plane의 로컬에서 혼자 사용한다면 큰 문제는 없다.
+
+하지만 외부의 다른 사람이 Kubernetes에 접속해서 관리를 해야한다면 접속을 위해 인증서를 발급해야 한다.
+
+모든 인증서의 발급은 Kubernetes의 Root CA가 맡는다. 관리자에게 인증서 발급 요청이 오면 관리자는 Kubernetes의 Root CA를 이용하여 발급해줄 수 있다.
+
+즉, Root CA의 인증서와 키는 매우 안전한 곳에 존재하고 반드시 안전하게 관리해야 한다.
+
+kubeadm의 경우에는 이를 Control Plane에게 저장하며 Control Plane이 CA 서버가 된다.
+
+CA 인증서를 이용해서 만료될 때마다 필요한 인증서들을 발급할 수 있다. 하지만, 이걸 매번 하기엔 비효율적이므로 Certificates API 를 지원한다.
+
+인증서 요청이 들어오면 서버의 Certificates API를 통해 인증서를 발급하는 자동화가 가능하다.
+
+이를 CertificateSigningRequest(CSR)이라고 하며 관리자가 CSR 객체를 만들 때 Kubernetes에서의 권한 부여 및 갱신을 설정할 수 있다.
+
+먼저 이를 위해 새로운 Kubernetes 사용자가 자신의 키를 통해 CSR 파일을 만들어야 한다.
+
+키와 CSR파일은 openssl 을 이용해 만들 수 있다.
+
+```
+# openssl genrsa -out (KEY FILE) 2048
+
+# openssl req -new -key (KEY FILE) -subj "/CN=(NAME)" -out (CSR FILE)
+```
+
+키 파일과 CSR 파일을 만들었다면 CSR 객체를 만들어야한다.
+
+CSR 객체를 만들 때에는 YAML 파일을 이용한다.
+
+```
+apiVersion: certificates.k8s.io/v1beta1
+kind: CertificateSigningRequest
+metadata:
+  name: (USER NAME)
+spec:
+  groups:
+  - system:authenticated
+  request: (ENCODED USER CSR USING BASE64)
+  signerName: kubernetes.io/kube-apiserver-client
+  usages:
+  - client auth
+```
+
+request 부분은 반드시 base64로 인코딩된 CSR 파일 전문을 넣어야한다. 이는 cat (CSR FILE) | base64 를 이용하면 된다.
+
+groups는 ClusterRole로 기본 그룹은 https://kubernetes.io/docs/reference/access-authn-authz/rbac/#discovery-roles 로 정의되어 있다.
+
+signerName은 서명자를 지정하는 것으로 어느 구성 요소에게 서명을 받을지 지정하는 것이다. 
+
+이미 Kubernetes에서 만든 signer는 https://kubernetes.io/docs/reference/access-authn-authz/certificate-signing-requests/#kubernetes-signers 에서 확인할 수 있다.
+
+usages는 X.509의 Key Usage로 공개키에서 사용될 보안 서비스들을 지정한다.
+
+YAML 파일을 통해 CSR을 만들면 kubectl get csr 명령어로 현재 CSR을 확인할 수 있다.
+
+```
+# kubectl get csr
+```
+
+처음 CSR은 무조건 Pending 상태를 유지하는데 이는 Kubernetes에서 승인이 되지 않았기 때문이다.
+
+승인이나 거절을 하기 위해서는 kubectl certificate 명령을 사용하면 된다.
+
+```
+승인
+# kubectl certificate approve (CSR NAME)
+
+거절
+# kubectl certificate deny (CSR NAME) 
+```
+
+그리고 kubectl get csr을 할 때 CSR의 이름을 지정하고 YAML 파일로 내보낸다면 CSR 설정들을 확인할 수 있다.
+
+```
+# kubectl get csr (CSR NAME) -o yaml
+```
+
+현재 지정된 권한이나 상태를 확인할 수 있다.
