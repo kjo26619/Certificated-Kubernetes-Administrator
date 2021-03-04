@@ -38,3 +38,25 @@ Kubernetes에서는 모든 구성 요소 간에 통신에서 보안 유지를 �
 
 따로, 유저 정보를 저장하는 것이 아닌 인증서로 Kubernetes에 권한이 있는지 확인을 한다. 
 
+kubeadm을 사용하면 자동으로 X.509 인증서가 생성된다.
+
+가장 먼저 Kubernetes의 Root CA 키와 인증서를 생성한다. 이는 /etc/kubernetes/pki/ca.key 와 ca.crt 로 구성된다.
+
+그 후 서버측에 Root CA의 인증서를 통해 kube-apiserver, etcd의 인증서를 생성한다.
+
+kube-apiserver의 인증서는 /etc/kubernetes/pki/apiserver.crt 로 구성된다. etcd는 /etc/kubernetes/pki/etcd/ 디렉토리에 새로운 CA에 대해 구성된다.
+
+이는 etcd 역시 관련 기능을 사용하기 위해서는 인증서를 사용하기 때문에 자신의 CA를 구성한다. 
+
+이들의 정확한 정보를 알고 싶다면 openssl 명령어를 사용해서 인증서를 확인하면 된다.
+
+```
+# openssl x509 -in (CERTIFICATES FILE) -text
+```
+
+![image1]()
+
+이를 통해 인증서의 Common Name, CA Name, Alternate Names, 만료일 등을 확인할 수 있다.
+
+만료일의 경우 CA 인증서는 10년이며 하위 인증서들은 1년이다.
+
