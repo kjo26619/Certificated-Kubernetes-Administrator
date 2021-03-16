@@ -49,7 +49,7 @@ curl http://(CONTROL PLANE ADDRESS):6443 -k
 
 만약, 지정하지 않고 보내면 다음과 같이 거부당한다.
 
-![image1]()
+![image1](https://github.com/kjo26619/Certificated-Kubernetes-Administrator/blob/main/Chapter4/Image/apigroup1.PNG)
 
 그래서 kubectl proxy 명령어를 이용해서 Proxy를 만들어 주면 된다.
 
@@ -57,9 +57,9 @@ curl http://(CONTROL PLANE ADDRESS):6443 -k
 kubectl proxy
 ```
 
-![image2]()
+![image2](https://github.com/kjo26619/Certificated-Kubernetes-Administrator/blob/main/Chapter4/Image/apigroup2.PNG)
 
-![image3]()
+![image3](https://github.com/kjo26619/Certificated-Kubernetes-Administrator/blob/main/Chapter4/Image/apigroup3.PNG)
 
 여기서 주의할 점은, 어차피 Localhost 내에서 사용할 예정이면 --address와 --accept-hosts 옵션은 사용하지 않아도 된다.
 
