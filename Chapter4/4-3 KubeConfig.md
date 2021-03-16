@@ -29,7 +29,7 @@ Kubernetes 클러스터에서 정보를 얻을 때에는 kube-apiserver로 키�
 
 내용을 확인해보면 3가지 섹션이 존재한다는 것을 알 수 있다.
 
-![image1]()
+![image1](https://github.com/kjo26619/Certificated-Kubernetes-Administrator/blob/main/Chapter4/Image/kubeconfig1.PNG)
 
 3가지 섹션은 cluster, context, user이다.
 
@@ -80,7 +80,7 @@ clsuter, context, user가 모두 Array로 구성되어 있다. 그러므로 여�
 # kubectl config view
 ```
 
-![image2]()
+![image2](https://github.com/kjo26619/Certificated-Kubernetes-Administrator/blob/main/Chapter4/Image/kubeconfig2.PNG)
 
 그리고 현재 kubectl이 사용하는 KubeConfig를 변경하기 위해서는 kubectl config use-context 명령어를 이용하면 된다.
 
