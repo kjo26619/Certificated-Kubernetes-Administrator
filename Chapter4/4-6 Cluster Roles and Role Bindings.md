@@ -59,3 +59,11 @@ roleRef:
 kind를 ClusterRoleBinding으로 바꾸면 되며 나머지 구성은 크게 다르지 않다.
 
 대신, 이 구성은 모든 Namespace에게 적용된다.
+
+Cluster Role을 확인하는 방법은 kubectl get clusterrole을 사용하면 된다.
+
+```
+# kubectl get clusterrole
+
+# kubectl get clusterrolebindings
+```
