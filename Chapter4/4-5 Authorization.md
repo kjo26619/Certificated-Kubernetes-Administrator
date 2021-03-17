@@ -12,7 +12,7 @@ Authorization은 각 사용자가 가질 수 있는 Kubernetes 클러스터에 �
 
 Authorization에는 여러가지 메커니즘이 있으며 Node Authorization, Attribute-based Authorization, Role-based Authorization, Webhook 이다.
 
-# Authorization - Node
+# Node Authorization
 
 Node Authorization은 Kubelet이 만든 API 요청을 승인할 때 사용하는 특수한 Authorization이다.
 
@@ -144,7 +144,7 @@ subjects와 roleRef가 추가되었는데 각각 사용자에 대해서 작성�
 # kubectl get rolebindings
 ```
 
-![image2]()
+![image2](https://github.com/kjo26619/Certificated-Kubernetes-Administrator/blob/main/Chapter4/Image/auth2.PNG)
 
 Role과 RoleBinding 대한 자세한 내용을 확인하기 위해서는 kubectl describe 명령어를 사용하면 된다.
 
@@ -154,7 +154,7 @@ Role과 RoleBinding 대한 자세한 내용을 확인하기 위해서는 kubectl
 # kubectl describe rolebinding (ROLEBINDING NAME)
 ```
 
-![image3]()
+![image3](https://github.com/kjo26619/Certificated-Kubernetes-Administrator/blob/main/Chapter4/Image/auth3.PNG)
 
 설정한 Role에 대해서 명령어들이 가능한지 확인하는 방법이 있다.
 
@@ -164,7 +164,7 @@ Role과 RoleBinding 대한 자세한 내용을 확인하기 위해서는 kubectl
 # kubectl auth can-i (COMMAND) --as (USER NAME)
 ```
 
-![image4]()
+![image4](https://github.com/kjo26619/Certificated-Kubernetes-Administrator/blob/main/Chapter4/Image/auth4.PNG)
 
 --as를 붙이지 않으면 관리자의 권한에 대한 확인을 진행할 수 있다.
 
@@ -204,7 +204,7 @@ kube-apiserver의 설정을 바꾸어주면 된다.
 
 이러한 Authorization을 설정하기 위해서는 kube-apiserver 설정에서 --authorization-mode를 바꾸어 주면 된다.
 
-![image1]()
+![image1](https://github.com/kjo26619/Certificated-Kubernetes-Administrator/blob/main/Chapter4/Image/auth1.PNG)
 
 이 --authorization-mode는 여러개로 설정할 수 있다.
 
