@@ -146,9 +146,52 @@ spec:
       cidr: 192.168.5.10/32
     ports:
     - protocol: TCP
-      prot: 80
+      port: 80
 ```
 
 policyTypes 섹션에 Egress를 추가한 다음 egress 섹션을 추가해주면 된다.
 
 네트워크 트래픽을 내보낼 때 작동하는 것이므로 from이 to로 바뀐다.
+
+그리고 포트가 다른 여러 개의 Pod에 대한 Network Policy를 지정한다면 to나 from을 추가하면 된다.
+
+```
+apiVersion: networking.k8s.io/v1
+kind: NetworkPolicy
+metadata:
+  name: db-policy
+spec:
+  podSelector:
+    matchLabels:
+      role: db
+  policyTypes:
+  - Egress
+  egress:
+  - to:
+    - ipBlock:
+      cidr: 192.168.5.10/32
+    ports:
+    - protocol: TCP
+      port: 80
+  - to:
+    - podSelector:
+        matchLabels:
+          name: web
+      ports:
+      - protocol: TCP
+        port: 8080
+```
+
+# Network Policy Command
+
+만들어진 Network Policy를 확인하기 위해서는 kubectl get networkpolicies 명령어를 사용하면 된다.
+
+```
+# kubectl get networkpolicies
+```
+
+자세한 사항을 확인하기 위해서는 kubectl describe 명령을 사용하면 된다.
+
+```
+# kubectl describe networkpolicies (NETWORK POLICY NAME)
+```
