@@ -74,6 +74,118 @@ RBAC는 Role을 만들어내고 이를 사용자에게 연결을 하는 방법�
 
 이렇게 하면 같은 Role을 가진 사용자들을 쉽게 관리할 수 있다. Role을 변경하게 되면 연결되어 있는 모든 사용자에게 적용이 된다.
 
+Role은 YAML파일을 통해서 만들 수 있다.
+
+```
+apiVersion: rbac.authorization.k8s.io/v1
+kind: Role
+metadata:
+  name: developer
+rules:
+- apiGroups: [""]
+  resources: ["pods"]
+  verbs: ["list", "get", "create", "update", "delete"]
+```
+
+Pods를 만들 때와 유사하나 spec이 아닌 rules로 구성된다.
+
+rules에는 3가지 섹션이 있으며 apiGroups, resources, verbs가 있다.
+
+apiGroups는 4-4에서 정리한 API Group들을 의미한다. 이 사용자가 사용할 수 있는 API Group들을 나타내며 비워둘 경우 코어를 의미한다.
+
+resources는 관리할 수 있는 자원들을 의미한다. 그리고 verbs는 resources에서 지정한 자원에 대해 사용할 수 있는 명령들을 의미한다.
+
+rules는 Array로 구성되어 있으며 각 자원에 대해서 추가하고 싶을 경우에는 Array를 늘리면 된다.
+
+```
+apiVersion: rbac.authorization.k8s.io/v1
+kind: Role
+metadata:
+  name: developer
+rules:
+- apiGroups: [""]
+  resources: ["pods"]
+  verbs: ["list", "get", "create", "update", "delete"]
+- apiGroups: [""]
+  resources: ["ConfigMap"]
+  verbs: ["create"]
+```
+
+Role을 만들어 냈다면 다음은 사용자와 Role을 연결해주는 객체를 만들어야 한다.
+
+이는 RoleBinding이라고 하며 어느 사용자에게 어느 Role을 연결할 지 YAML파일로 구성한다.
+
+```
+apiVersion: rbac.authorization.k8s.io/v1
+kind: RoleBinding
+metadata:
+  name: devuser-developer-binding
+subjects:
+- kind: User
+  name: dev-user
+  apiGroup: rbac.authorization.k8s.io
+roleRef:
+  kind: Role
+  name: developer
+  apiGroup: rbac.authorization.k8s.io
+```
+
+subjects와 roleRef가 추가되었는데 각각 사용자에 대해서 작성하는 곳과 설정할 Role에 대해 작성하는 곳이다.
+
+중요한 점은 subjects는 Array이지만 roleRef는 Array가 아니다. 즉, 여러 사용자에게 하나의 Role을 설정하는 것이다.
+
+기본적으로 Role과 RoleBinding은 Namespace 단위로 작동하며 각각 Namespace에서 확인하고 설정해주어야 한다.
+
+생성한 Role과 RoleBinding을 확인하기 위해서는 kubectl get roles, kubectl get rolebindings 명령어를 사용하면 된다.
+
+```
+# kubectl get roles
+
+# kubectl get rolebindings
+```
+
+![image2]()
+
+Role과 RoleBinding 대한 자세한 내용을 확인하기 위해서는 kubectl describe 명령어를 사용하면 된다.
+
+```
+# kubectl describe role (ROLE NAME)
+
+# kubectl describe rolebinding (ROLEBINDING NAME)
+```
+
+![image3]()
+
+설정한 Role에 대해서 명령어들이 가능한지 확인하는 방법이 있다.
+
+이는 kubectl auth can-i 명령어에서 --as 옵션을 사용하면 된다.
+
+```
+# kubectl auth can-i (COMMAND) --as (USER NAME)
+```
+
+![image4]()
+
+--as를 붙이지 않으면 관리자의 권한에 대한 확인을 진행할 수 있다.
+
+그리고 Role과 RoleBinding은 Namespace 마다 설정되므로 뒤에 --namesapce 옵션을 붙여서 각 Namespace마다 권한을 확인할 수 있다.
+
+마지막으로 이미 만들어진 자원들에 대해서 설정해줄 수 있다.
+
+예를 들어 blue, green, orange, purple, pink 라는 5개의 Pods가 있을 때 blue와 orange만 사용할 수 있는 Role을 적용하고 싶다면 resourceNames 섹션을 추가하면 된다.
+
+```
+apiVersion: rbac.authorization.k8s.io/v1
+kind: Role
+metadata:
+  name: developer
+rules:
+- apiGroups: [""]
+  resources: ["pods"]
+  verbs: ["list", "get", "create", "update", "delete"]
+  resourceNames: ["blue", "orange"]
+```
+
 # Webhook
 
 Kubernetes는 기본적으로 위 3가지의 Authorization을 사용하지만, Kubernetes의 바깥에 존재하는 Authorization 어플리케이션으로 처리할 수 있게끔 설계되어 있다.
