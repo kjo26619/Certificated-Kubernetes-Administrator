@@ -137,3 +137,7 @@ spec:
       persistentVolumeClaim:
         claimName: myclaim
 ```
+
+주의할 점은 Pods와 PVC를 연결한 이후에 PVC를 삭제하려고 하면 Terminating만 될 뿐 삭제되지 않는다.
+
+그 이유는 Pods와 연결되어 있어서 Pods가 삭제되어야지만 PVC도 삭제되기 때문이다.
