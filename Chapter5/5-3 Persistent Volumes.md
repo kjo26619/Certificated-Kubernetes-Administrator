@@ -114,6 +114,8 @@ Recycle은 볼륨 내의 데이터를 삭제하고 다시 사용할 수 있도�
 
 하지만, Recycle은 현재 사용하지 않으며 동적 프로비저닝을 추천하고 있다.
 
+# Pods access Persistent Volume Claim
+
 PVC를 구성하여 사용자가 PV를 할당 받은 뒤 Pods에게 설정할 수 있다.
 
 이는 Pod의 YAML파일에서 volumes를 추가할 때 PVC로 설정해주면 된다.
