@@ -30,7 +30,7 @@ accessModes는 볼륨에 접근할 수 있는 방식으로 3이다.
   - ReadOnlyMany : 여러 노드에서 볼륨을 읽기 전용
   - ReadWriteMany : 여러 노드에서 볼륨을 읽기-쓰기 가능
 
-resources는 PV의 크기이다.
+capacity는 PV의 크기이다.
 
 hostPath는 호스트에서의 PV의 위치이다. 
 
@@ -57,7 +57,7 @@ spec:
 # kubectl get persistentvolume
 ```
 
-![image1]()
+![image1](https://github.com/kjo26619/Certificated-Kubernetes-Administrator/blob/main/Chapter5/Image/pv1.PNG)
 
 # Persistent Volume Claims
 
@@ -92,7 +92,7 @@ resources는 요청한 크기이다. 이것을 확인하고 Kubernetes가 알맞
 # kubectl get persistentvolumeclaim
 ```
 
-![image2]()
+![image2](https://github.com/kjo26619/Certificated-Kubernetes-Administrator/blob/main/Chapter5/Image/pv2.PNG)
 
 PV를 모두 사용하고 나서 사용자가 PV를 반환하기 위해서는 PVC를 삭제해야 한다.
 
