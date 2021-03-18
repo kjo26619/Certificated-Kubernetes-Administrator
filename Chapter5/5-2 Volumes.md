@@ -52,7 +52,7 @@ Kubernetes에서는 노드가 여러 개일 경우, 모든 노드가 Volume에�
 
 그러다보니 로컬 파일 시스템의 경로로 Volumes을 지정하는 것은 Multi-Node 상황에서는 추천하지 않는다.
 
-그래서 Kubernetes에서는 여러가지 외부 Storage Solution을 지원한다. 이는 https://kubernetes.io/docs/concepts/storage/volumes/ 에서 확인할 수 있다.
+그래서 Kubernetes에서는 여러가지 외부 Storage Class를 지원한다. 이는 https://kubernetes.io/docs/concepts/storage/volumes/ 에서 확인할 수 있다.
 
 만약, AWS EBS를 사용한다고 가정하면 다음과 같이 설정한다.
 
