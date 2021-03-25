@@ -38,18 +38,18 @@ ps 명령어를 통해 kubelet을 확인해보면 cni 설정이 어떻게 되어
 # ps -aux | grep kubelet
 ```
 
-![image1]()
+![image1](https://github.com/kjo26619/Certificated-Kubernetes-Administrator/blob/main/Chapter6/Image/cni1.PNG)
 
 kubelet의 네트워크 플러그인이 CNI인지, cni의 bin과 conf 디렉토리를 확인해볼 수 있다.
 
 bin 디렉토리를 확인해보면 실행 가능한 CNI 플러그인들이 모두 나열되어 있다. 
 
-![image2]()
+![image2](https://github.com/kjo26619/Certificated-Kubernetes-Administrator/blob/main/Chapter6/Image/cni2.PNG)
 
 그리고 conf 디렉토리를 확인해보면 conf 파일이 있다. 이 것은 kubelet이 어떤 플러그인을 사용하는지 지정해놓은 파일이다.
 
 파일이 여러개일 경우 알파벳 순으로 하나를 사용한다.
 
-![image3]()
+![image3](https://github.com/kjo26619/Certificated-Kubernetes-Administrator/blob/main/Chapter6/Image/cni3.PNG)
 
 CNI 네트워크의 이름, IP 주소 대역, Gateway 사용 여부 등을 알 수 있다.
