@@ -28,7 +28,7 @@ ip 명령을 통해 Namespace를 늘릴 수 있고 없앨 수 있으며 서로 �
 
 Docker도 이 방법을 통해 처음에는 docker0라는 Network Namespace를 가지게 된다.
 
-![image1]()
+![image1](https://github.com/kjo26619/Certificated-Kubernetes-Administrator/blob/main/Chapter6/Image/network1.PNG)
 
 이 docker0 Bridge가 기존의 물리 인터페이스와 연결되어 인터넷 혹은 밖과 통신할 수 있는 것이다.
 
