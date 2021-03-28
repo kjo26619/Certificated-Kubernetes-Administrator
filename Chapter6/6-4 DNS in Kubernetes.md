@@ -55,7 +55,7 @@ Core DNS는 kube-system Namespace에 Pod로 배포가 된다. 실제로는 Repli
 # kubectl get pods -n kube-system
 ```
 
-![image1]()
+![image1](https://github.com/kjo26619/Certificated-Kubernetes-Administrator/blob/main/Chapter6/Image/dns1.PNG)
 
 그리고 Core DNS는 설정이 존재하는데 이는 Config Map으로 구성되어 있다.
 
@@ -67,9 +67,9 @@ Core DNS는 kube-system Namespace에 Pod로 배포가 된다. 실제로는 Repli
 # kubectl describe configmaps -n kube-system coredns
 ```
 
-![image2]()
+![image2](https://github.com/kjo26619/Certificated-Kubernetes-Administrator/blob/main/Chapter6/Image/dns2.PNG)
 
-![image3]()
+![image3](https://github.com/kjo26619/Certificated-Kubernetes-Administrator/blob/main/Chapter6/Image/dns3.PNG)
 
 이 Config Map은 Core DNS Pod에게 연결된다. Config Map을 수정하면 Core DNS의 설정을 수정하는 것이다.
 
@@ -83,7 +83,7 @@ Core DNS가 구성되면 Pods나 Services 가 생성/삭제될 때마다 자동�
 
 이러한 작업은 kubelet이 하며 kubelet의 설정파일을 확인해보면 Core DNS에 대한 내용이 있는 것을 확인할 수 있다.
 
-![image4]()
+![image4](https://github.com/kjo26619/Certificated-Kubernetes-Administrator/blob/main/Chapter6/Image/dns4.PNG)
 
 Kubernetes Core DNS에서 유의할 점은 Services의 경우에는 도메인까지 전부 치지 않더라도 Core DNS가 도메인에 대한 내용을 명시하고 있기 때문에 반환해줄 수 있다.
 
