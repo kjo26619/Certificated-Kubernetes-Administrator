@@ -84,9 +84,3 @@ Core DNS가 구성되면 Pods나 Services 가 생성/삭제될 때마다 자동�
 이러한 작업은 kubelet이 하며 kubelet의 설정파일을 확인해보면 Core DNS에 대한 내용이 있는 것을 확인할 수 있다.
 
 ![image4](https://github.com/kjo26619/Certificated-Kubernetes-Administrator/blob/main/Chapter6/Image/dns4.PNG)
-
-Kubernetes Core DNS에서 유의할 점은 Services의 경우에는 도메인까지 전부 치지 않더라도 Core DNS가 도메인에 대한 내용을 명시하고 있기 때문에 반환해줄 수 있다.
-
-하지만 Pod는 그렇지 않다. Pod에 대한 DNS 응답을 받기 위해서는 도메인까지 정확히 적어주어야 한다. 
-
-예를 들어, Services는 web-service 라고만 해도 찾아서 반환하지만 10.244.2.5를 가진 web Pod는 10-244-2-5는 반환해주지 못하며 10-244-2-5.apps.pod.cluster.local 로 사용해야 한다.
