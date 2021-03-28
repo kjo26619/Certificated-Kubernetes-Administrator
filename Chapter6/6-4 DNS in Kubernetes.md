@@ -75,6 +75,8 @@ Core DNS는 kube-system Namespace에 Pod로 배포가 된다. 실제로는 Repli
 
 이 설정에 있는 Corefile 밑에 있는 errors, health, ready, kubernetes들은 플러그인이며 이에 대한 자세한 사항은 https://kubernetes.io/docs/tasks/administer-cluster/dns-custom-nameservers/#coredns-configmap-options 에서 확인할 수 있다.
 
+Corefile의 맨 앞부분은 DNS 용 포트인 53 포트를 의미하는 것이다.
+
 Corefile의 kubernetes는 기본 도메인 이름을 설정할 수 있으며 그것이 cluster.local이다.
 
 그리고 forward는 도메인 내에 없는 쿼리의 경우 어느 Nameserver를 기반으로 할 것인지 정하는 것으로 /etc/resolv.conf에 설정된 값을 가지고 온다.
@@ -84,3 +86,17 @@ Core DNS가 구성되면 Pods나 Services 가 생성/삭제될 때마다 자동�
 이러한 작업은 kubelet이 하며 kubelet의 설정파일을 확인해보면 Core DNS에 대한 내용이 있는 것을 확인할 수 있다.
 
 ![image4](https://github.com/kjo26619/Certificated-Kubernetes-Administrator/blob/main/Chapter6/Image/dns4.PNG)
+
+그리고 Core DNS에 대한 연결도 Services를 가지고 있으며 kubectl get services 를 통해서 확인해 볼 수 있다.
+
+```
+# kubectl get services -n=kube-system
+```
+
+![image5](https://github.com/kjo26619/Certificated-Kubernetes-Administrator/blob/main/Chapter6/Image/dns5.PNG)
+
+53 포트를 사용하며 kube-dns라는 이름을 가지고 10.96.0.10이라는 IP를 갖는다.
+
+이제 Pod 내부에서 DNS 요청을 보내보면 10.96.0.10에서 이루어지는 것을 확인해 볼 수 있다.
+
+![image6](https://github.com/kjo26619/Certificated-Kubernetes-Administrator/blob/main/Chapter6/Image/dns6.PNG)
