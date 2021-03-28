@@ -24,11 +24,15 @@ Kubernetes Services의 Cluster IP는 내부에 있는 Pods를 연결한다. 그�
 
 유일하게 포트 번호를 작성하지 않아도 되는 것은 HTTP와 HTTPS 즉, 80과 443이다. Node Port는 30000 이상의 포트를 사용하므로 이와는 관련이 없다.
 
+![image1](https://github.com/kjo26619/Certificated-Kubernetes-Administrator/blob/main/Chapter6/Image/ingress1.PNG)
+
 그래서 나온 해결법이 Proxy-Server이다. 클러스터 외부에 Proxy-Server를 만들고 80이나 443포트와 Node Port와 연결해주면 된다.
 
 그리고 이 Proxy-Server의 IP 주소를 DNS에 등록하면 사용자는 www.test-store.com 만 사용해도 웹에 들어올 수 있는 것이다.
 
 # Cloud Platform
+
+![image2](https://github.com/kjo26619/Certificated-Kubernetes-Administrator/blob/main/Chapter6/Image/ingress2.PNG)
 
 클라우드 플랫폼들이 등장하면서 새로운 방법이 제시되었다.
 
@@ -49,6 +53,8 @@ Kubernetes Services의 Cluster IP는 내부에 있는 Pods를 연결한다. 그�
 이들을 여러 개의 Load Balancer에 각각 처리하는 것은 정말 힘든 일이기 때문이다.
 
 # Ingress
+
+![image3](https://github.com/kjo26619/Certificated-Kubernetes-Administrator/blob/main/Chapter6/Image/ingress3.PNG)
 
 이러한 문제로 Kubernetes에서는 외부 URL과 클러스터 내부에 요소들과 연결을 돕는 Ingress 기능을 추가하였다.
 
