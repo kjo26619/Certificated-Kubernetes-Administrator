@@ -16,7 +16,7 @@
 
 Kubernetes Services의 Cluster IP는 내부에 있는 Pods를 연결한다. 그리고 Node Port는 외부에서 들어오는 트래픽과 Pod를 연결한다.
 
-하지만, 여기서도 문제점이 Node Port는 포트 번호를 명시해야 된다. 예를 들어, http://<node-ip>:38080 같은 URL로 접속해야 한다.
+하지만, 여기서도 문제점이 Node Port는 포트 번호를 명시해야 된다. 예를 들어, http://(node-ip):38080 같은 URL로 접속해야 한다.
 
 그러나 DNS는 IP만을 반환해주는 서비스로 포트에 대해서는 반환해주지 않는다.
 
@@ -165,13 +165,13 @@ Nginx의 경우에는 https://kubernetes.github.io/ingress-nginx/examples/ 에�
 
 이 중에서 Rewrite-target은 URL을 Kubernetes에 맞게 다시 재 작성해주는 옵션이다.
 
-예를 들어, http://www.test-store.com/blog 와 http://<blog-service>:<port> 를 연결해야 된다고 가정한다.
+예를 들어, http://www.test-store.com/blog 와 http://(blog-service):(port) 를 연결해야 된다고 가정한다.
   
 Ingress Resource를 이용하여 path에 /blog를 추가해주면 될 것같지만 404 에러가 나온다.
 
-그 이유는 URL의 문제이다. http://www.test-store.com/blog 를 Ingress Resrouce로 연결하면 http://<blog-service>:<port>/blog 로 연결해준다.
+그 이유는 URL의 문제이다. http://www.test-store.com/blog 를 Ingress Resrouce로 연결하면 http://(blog-service):(port)/blog 로 연결해준다.
   
-즉, http://<blog-service>:<port>/blog 는 없는 URL이므로 404 에러를 반환해주는 것이다.
+즉, http://(blog-service):(port)/blog 는 없는 URL이므로 404 에러를 반환해주는 것이다.
   
 이 때 사용하는 것이 바로 Rewrite-target이다. Rewrite-target은 URL에 있는 path를 원하는 것으로 변환해주는 작업을 한다.
 
@@ -194,9 +194,9 @@ spec:
           servicePort: 80
 ```
 
-이렇게 하면 Nginx Controller는 http://www.test-store.com/blog 를 http://<blog-service>:<port>/blog 에서 /blog를 /로 다시 작성한다.
+이렇게 하면 Nginx Controller는 http://www.test-store.com/blog 를 http://(blog-service):(port)/blog 에서 /blog를 /로 다시 작성한다.
   
-그래서 http://<blog-service>:<port>/가 되면서 연결이 되는 것이다.
+그래서 http://(blog-service):(port)/ 가 되면서 연결이 되는 것이다.
   
 그 외에 다양한 설정은 https://kubernetes.github.io/ingress-nginx/examples/rewrite/ 에서 확인할 수 있다.
 
