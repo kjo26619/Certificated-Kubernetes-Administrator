@@ -16,7 +16,7 @@ Kubernetes는 어떠한 목적을 가진 클러스터냐에 따라 설치 방법
 
 그리고 클라우드 플랫폼에서는 자체적으로 Kubernetes를 구성하는 툴을 지원해준다.
 
-예를 들어 GCP의 GKE, AWS의 Kops, Azure의 AKS 등이 있다.
+예를 들어 GCE의 GKE, AWS의 Kops, Azure의 AKS 등이 있다.
 
 이제 클러스터 구성을 하면 알맞은 스토리지와 노드를 고를 필요가 있다.
 
@@ -32,3 +32,18 @@ Kubernetes는 어떠한 목적을 가진 클러스터냐에 따라 설치 방법
 
 하지만 대규모 클러스터 같은 경우에는 ETCD를 따로 구성할 수도 있다.
 
+# Turnkey Solutions vs. Hosted Solutions
+
+Kubernetes를 사용하는 클라우드에는 Turnky Solution과 Hosted Solution으로 나뉜다.
+
+Turnkey의 경우에는 스스로 VM을 프로비저닝하고 구성하여 직접 클러스터를 관리하는 솔루션이다.
+
+설치 등은 자동화 되어있지만 스크립트를 짜고 스스로 클러스터를 만드는 솔루션이라고 보면 된다.
+
+유명한 것은 AWS의 Kops이다. 
+
+Hosted Solution은 Kubernetes-As-A-Service 라고 보면 되며 Provider가 관리해주는 솔루션이다.
+
+Provider가 VM 프로비저닝, Kubernetes 설치, VM 유지 등을 관리해주며 사용자는 자신이 원하는 애플리케이션만 배포하면 된다.
+
+유명한 것은 GCE의 GKE이다.
