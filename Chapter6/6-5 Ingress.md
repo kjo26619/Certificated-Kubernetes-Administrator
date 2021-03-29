@@ -154,3 +154,50 @@ spec:
 Ingress Controller와 Ingress Resource를 설정하면 Ingress 설정이 끝난 것이다.
 
 원래 Ingress는 extensions/v1beta1 에 존재했지만 1.22 Version 이후로 networking.k8s.io/v1 로 바뀌었다.
+
+# Annotation and Rewrite-target
+
+Ingress Controller 마다 작동에 대한 옵션이 다양하게 있다.
+
+Nginx의 경우에는 https://kubernetes.github.io/ingress-nginx/examples/ 에서 확인할 수 있다.
+
+이러한 옵션 지정을 Annotaions라고 하며 YAML 파일에서 지정할 수 있다.
+
+이 중에서 Rewrite-target은 URL을 Kubernetes에 맞게 다시 재 작성해주는 옵션이다.
+
+예를 들어, http://www.test-store.com/blog 와 http://<blog-service>:<port> 를 연결해야 된다고 가정한다.
+  
+Ingress Resource를 이용하여 path에 /blog를 추가해주면 될 것같지만 404 에러가 나온다.
+
+그 이유는 URL의 문제이다. http://www.test-store.com/blog 를 Ingress Resrouce로 연결하면 http://<blog-service>:<port>/blog 로 연결해준다.
+  
+즉, http://<blog-service>:<port>/blog 는 없는 URL이므로 404 에러를 반환해주는 것이다.
+  
+이 때 사용하는 것이 바로 Rewrite-target이다. Rewrite-target은 URL에 있는 path를 원하는 것으로 변환해주는 작업을 한다.
+
+그래서 다음과 같이 설정한다.
+
+```
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: ingress-blog
+  annotations:
+    nginx.ingress.kubernetes.io/rewrite-target: /
+spec:
+  rules:
+  - http:
+      paths:
+      - path: /blog
+        backend:
+          serviceName: blog-service
+          servicePort: 80
+```
+
+이렇게 하면 Nginx Controller는 http://www.test-store.com/blog 를 http://<blog-service>:<port>/blog 에서 /blog를 /로 다시 작성한다.
+  
+그래서 http://<blog-service>:<port>/가 되면서 연결이 되는 것이다.
+  
+그 외에 다양한 설정은 https://kubernetes.github.io/ingress-nginx/examples/rewrite/ 에서 확인할 수 있다.
+
+이 설정은 Nginx를 기반해서 작성한 것으로 다른 Ingress Controller는 설정 방법이 다를 수 있다.
