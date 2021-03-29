@@ -99,7 +99,7 @@ Ingress Controller Pod가 모두 배포되면 Services 중 Node Port를 이용�
 Ingress Resource는 Kubernetes API여서 YAML 파일로 구성하면 된다.
 
 ```
-apiVersion: extensions/v1beta1
+apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
   name: ingress-blog
@@ -114,7 +114,7 @@ spec:
 만약 URL이나 도메인 기반으로 Path를 나누고 싶다면 ( www.test-store.com/blog, www.blog.test-store.com ) rules를 추가해주면 된다.
 
 ```
-apiVersion: extensions/v1beta1
+apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
   name: ingress-blog
@@ -133,7 +133,7 @@ spec:
 ```
 
 ```
-apiVersion: extensions/v1beta1
+apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
   name: ingress-blog
@@ -152,3 +152,5 @@ spec:
 ```
 
 Ingress Controller와 Ingress Resource를 설정하면 Ingress 설정이 끝난 것이다.
+
+원래 Ingress는 extensions/v1beta1 에 존재했지만 1.22 Version 이후로 networking.k8s.io/v1 로 바뀌었다.
