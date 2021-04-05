@@ -36,6 +36,7 @@ Chapter 2:
 Chapter 3:
 
 1) [OS Upgrade](https://github.com/kjo26619/Certificated-Kubernetes-Administrator/blob/main/Chapter3/3-1%20OS%20Upgrades.md)
+2) [Backup and Restore](https://github.com/kjo26619/Certificated-Kubernetes-Administrator/blob/main/Chapter3/3-2%20Backup%20and%20Restore.md)
 
 Chapter 4:
 
