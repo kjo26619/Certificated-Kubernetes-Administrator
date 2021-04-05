@@ -37,3 +37,13 @@ Control Plane의 중심이 되는 5가지의 필수 구성 요소 kube-apiserver
 ```
 
  journalctl은 Systemd에서 수집한 로그를 journal 이라는 바이너리 형식으로 저장하고 이를 검색하고 확인하는 명령어이다.
+ 
+ # Service Troubleshooting
+ 
+ 만약, 문제가 발생되면 Static Pods의 설정이 문제일 가능성이 가장 높다.
+ 
+ 그래서 Static Pods를 수정해주고 확인해주면 된다.
+ 
+ 기본 Kubernetes의 Static Pods의 구성은 /etc/kubernetes 에 존재한다.
+ 
+ ![image2](https://github.com/kjo26619/Certificated-Kubernetes-Administrator/blob/main/Chapter8/Image/cp2.PNG)
