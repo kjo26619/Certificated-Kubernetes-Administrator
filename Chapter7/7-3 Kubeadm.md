@@ -30,13 +30,13 @@ kubeadm init 명령을 사용하면 되며 이는 Control Plane에서 시작해�
 # kubeadm init
 ```
 
-![image1]()
+![image1](https://github.com/kjo26619/Certificated-Kubernetes-Administrator/blob/main/Chapter7/Image/kubeadm1.PNG)
 
 기본 구성으로 사용하려면 kubeadm init 명령만 사용하면 되며 kube-apiserver의 주소를 바꾸거나 Pod Network CIDR의 범위를 바꾸고 싶으면 옵션으로 지정할 수 있다.
 
 kubeadm의 옵션에 대해서는 https://kubernetes.io/docs/setup/production-environment/tools/kubeadm/create-cluster-kubeadm/#initializing-your-control-plane-node 에서 확인할 수 있다.
 
-![image2]()
+![image2](https://github.com/kjo26619/Certificated-Kubernetes-Administrator/blob/main/Chapter7/Image/kubeadm2.PNG)
 
 설치가 완료되면 밑에서 정보 3개를 확인해볼 수 있다.
 
@@ -48,7 +48,7 @@ kubeadm의 옵션에 대해서는 https://kubernetes.io/docs/setup/production-en
 
 이 것을 진행하지 않으면 Pod 뿐만 아니라 노드도 통신이 되지 않고 kubectl get nodes 명령을 사용해보면 NotReady 인 것을 확인할 수 있다.
 
-![image3]()
+![image3](https://github.com/kjo26619/Certificated-Kubernetes-Administrator/blob/main/Chapter7/Image/kubeadm3.PNG)
 
 마지막으로 Worker 노드에서 kubeadm 을 활용한 클러스터 Join이다.
 
@@ -58,7 +58,7 @@ kubeadm의 옵션에 대해서는 https://kubernetes.io/docs/setup/production-en
 # kubeadm join (CONTROL PLANE ADDRESS:PORT) --token (TOKEN)
 ```
 
-![image4]()
+![image4](https://github.com/kjo26619/Certificated-Kubernetes-Administrator/blob/main/Chapter7/Image/kubeadm4.PNG)
 
 이 명령어를 Worker 노드에서 실행하면 된다. 만약, 토큰이 사라졌거나 다시 발행해야할 경우에는 kubeadm token create 명령을 사용하면 된다.
 
@@ -66,7 +66,7 @@ kubeadm의 옵션에 대해서는 https://kubernetes.io/docs/setup/production-en
 # kubeadm token create
 ```
 
-![image5]()
+![image5](https://github.com/kjo26619/Certificated-Kubernetes-Administrator/blob/main/Chapter7/Image/kubeadm5.PNG)
 
 --print-join-command는 kubeadm join 명령까지 포함해서 보여주는 옵션이다.
 
