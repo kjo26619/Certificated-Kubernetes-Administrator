@@ -12,7 +12,7 @@ Worker 노드에 문제가 생긴다면 리소스 혹은 네트워크의 문제�
 # kubectl get nodes
 ```
 
-![image1]()
+![image1](https://github.com/kjo26619/Certificated-Kubernetes-Administrator/blob/main/Chapter8/Image/worker1.PNG)
 
 만약, Ready가 아니라 NotReady 상태라면 이유를 확인해볼 수 있다.
 
@@ -22,7 +22,7 @@ Worker 노드에 문제가 생긴다면 리소스 혹은 네트워크의 문제�
 # kubectl describe node (NODE NAME)
 ```
 
-![image2]()
+![image2](https://github.com/kjo26619/Certificated-Kubernetes-Administrator/blob/main/Chapter8/Image/worker2.PNG)
 
 이 describe 결과에서 핵심은 밑에 있는 Conditions이다.
 
@@ -34,7 +34,7 @@ OutofDisk, MemoryPressure, DiskPressure, PIDPressure 가 있으며 이유는 Mes
 
 그런데 이 결과들이 모두 UnKnown으로 바뀔 수 있다.
 
-![image3]()
+![image3](https://github.com/kjo26619/Certificated-Kubernetes-Administrator/blob/main/Chapter8/Image/worker3.PNG)
 
 이는 네트워크에서 이 노드와 연결을 할 수 없다는 의미이다. 대부분 네트워크에서 사라졌거나 노드 자체가 다운된 경우이다.
 
