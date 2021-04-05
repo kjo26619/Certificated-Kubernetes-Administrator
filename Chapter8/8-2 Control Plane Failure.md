@@ -18,7 +18,7 @@ Control Plane의 중심이 되는 5가지의 필수 구성 요소 kube-apiserver
 # kubectl get pods -n kube-system
 ```
 
-![image1]()
+![image1](https://github.com/kjo26619/Certificated-Kubernetes-Administrator/blob/main/Chapter8/Image/cp1.PNG)
 
 이들 중 문제가 생긴 Pod를 확인하고 수정하면 된다.
 
