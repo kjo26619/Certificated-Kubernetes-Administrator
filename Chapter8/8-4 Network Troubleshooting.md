@@ -22,21 +22,21 @@ coredns 라는 이름의 pod로 구성되어 있으며 Namespace는 kube-system 
 
 이 pod는 Deployment로 구성되어 있다.
 
-![image1]()
+![image1](https://github.com/kjo26619/Certificated-Kubernetes-Administrator/blob/main/Chapter8/Image/network1.PNG)
 
 그래서 문제가 발생했을 경우 Pod가 종료되며 describe 명령을 통해서 확인할 수 있다.
 
 그리고 Config Map이 존재한다. 역시 coredns라는 이름이다.
 
-![image2]()
+![image2](https://github.com/kjo26619/Certificated-Kubernetes-Administrator/blob/main/Chapter8/Image/network2.PNG)
 
 그리고 Service가 있으며 이름은 kube-dns이다.
 
-![image3]()
+![image3](https://github.com/kjo26619/Certificated-Kubernetes-Administrator/blob/main/Chapter8/Image/network3.PNG)
 
 만약 Service 설정이 잘못되어 있으면 Core DNS로 진입이 안될 수 있다.
 
-![image4]()
+![image4](https://github.com/kjo26619/Certificated-Kubernetes-Administrator/blob/main/Chapter8/Image/network4.PNG)
 
 그리고 Cluster Role과 Cluster Role Binding도 존재한다. 이는 coredns와 kube-dns 모두 존재한다.
 
@@ -60,15 +60,14 @@ kube-prxoy 역시 Static Pods로 구성된다.
 
 그리고 kubectl logs 명령으로 확인하는 방법도 있다.
 
-![image5]()
+![image5](https://github.com/kjo26619/Certificated-Kubernetes-Administrator/blob/main/Chapter8/Image/network5.PNG)
 
 그리고 kube-proxy는 Config Map을 가지고 있다.
 
 이 Config Map을 통해 설정을 확인할 수 있다.
 
-![image6]()
+![image6](https://github.com/kjo26619/Certificated-Kubernetes-Administrator/blob/main/Chapter8/Image/network6.PNG)
 
 kube-proxy의 config가 /var/lib/kube-proxy/config.conf 임도 확인할 수 있다.
 
 문제가 될만한 설정을 확인하고 수정하면 된다.
-
