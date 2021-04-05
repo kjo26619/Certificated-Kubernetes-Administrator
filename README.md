@@ -6,7 +6,7 @@ Kubernetes의 기본 구성은 https://github.com/kjo26619/Docker/tree/main/Chap
 
 # Index
 
-Chapter Pre-Reuquisites:
+Chapter Pre-Requisites:
 
 1) [Kubernetes](https://github.com/kjo26619/Docker/blob/main/Chapter8/8-1%20Kubernetes.md)
 2) [Kubernetes Install](https://github.com/kjo26619/Docker/blob/main/Chapter8/8-2%20Kubernetes%20Install.md)
