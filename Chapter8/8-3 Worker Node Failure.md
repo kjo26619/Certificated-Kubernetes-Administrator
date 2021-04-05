@@ -38,4 +38,10 @@ OutofDisk, MemoryPressure, DiskPressure, PIDPressure 가 있으며 이유는 Mes
 
 이는 네트워크에서 이 노드와 연결을 할 수 없다는 의미이다. 대부분 네트워크에서 사라졌거나 노드 자체가 다운된 경우이다.
 
+# Check Kubelet
+
 그 외에도 Worker 노드에서 kubelet 설정이 잘못되어 있을 수도 있다. 
+
+kubelet의 설정 파일은 /etc/kubernetes/ 에 있다.
+
+그리고 현재 실행 중인 kubelet의 config를 봐야 한다면 /var/lib/kubelet 에 config 파일이 있다.
