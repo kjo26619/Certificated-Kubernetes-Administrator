@@ -24,7 +24,7 @@ Serivce를 확인하는 가장 쉬운 방법은 curl을 이용하는 방법이�
 # kubectl describe service (SERVICE NAME)
 ```
 
-![image1]()
+![image1](https://github.com/kjo26619/Certificated-Kubernetes-Administrator/blob/main/Chapter8/Image/application1.PNG)
 
 Service 에서 확인해볼 것은 Selector와 Endpoint이다.
 
@@ -44,7 +44,7 @@ kubectl get pods 명령을 이용해서 현재 상태를 확인한다.
 # kubectl get pods
 ```
 
-![image2]()
+![image2](https://github.com/kjo26619/Certificated-Kubernetes-Administrator/blob/main/Chapter8/Image/application2.PNG)
 
 현재 STATUS가 Running이 아닐 경우 Pod는 제대로 동작하지 않는 것이다. 그러나 Running 임에도 RESTARTS 가 높아진다면 문제가 생긴 것이다.
 
@@ -58,9 +58,9 @@ Pod가 실행이 되다가 갑자기 종료되고 다시 시작되는 것이므�
 # kubectl logs (POD NAME)
 ```
 
-![image3]()
+![image3](https://github.com/kjo26619/Certificated-Kubernetes-Administrator/blob/main/Chapter8/Image/application3.PNG)
 
-![image4]()
+![image4](https://github.com/kjo26619/Certificated-Kubernetes-Administrator/blob/main/Chapter8/Image/application4.PNG)
 
 describe 명령은 Events 부분을 보면 문제점을 확인해볼 수 있다.
 
