@@ -1,4 +1,4 @@
-# Certificated-Kubernetes-Administrator
+# Certified-Kubernetes-Administrator
 
 Udemy의 Certified Kubernetes Administrator (CKA) with Practice Tests 강의를 듣고 요약한 내용입니다.
 
