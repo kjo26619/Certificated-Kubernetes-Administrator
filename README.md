@@ -6,7 +6,7 @@ Kubernetes의 기본 구성은 https://github.com/kjo26619/Docker/tree/main/Chap
 
 ![image1](https://github.com/kjo26619/Certified-Kubernetes-Administrator/blob/main/Chapter1/Image/CKA_kjo26619.PNG)
 
-합격했습니다. 후기가 궁금하시다면 연락주세요.
+합격했습니다. 후기가 궁금하시다면 연락주세요. (kjo26619@gmail.com)
 
 # Index
 
